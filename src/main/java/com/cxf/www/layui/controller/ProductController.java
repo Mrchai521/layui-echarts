@@ -1,5 +1,7 @@
 package com.cxf.www.layui.controller;
 
+import com.cxf.www.layui.entity.Map;
+import com.cxf.www.layui.service.IMapService;
 import com.cxf.www.layui.service.ProductService;
 import com.cxf.www.layui.vo.BarVO;
 import com.cxf.www.layui.vo.DataVO;
@@ -20,6 +22,8 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+    @Autowired
+    private IMapService iMapService;
 
     @RequestMapping("/list")
     @ResponseBody
@@ -36,7 +40,6 @@ public class ProductController {
     @GetMapping("/{url}")
     public String redirect(@PathVariable("url") String url) {
         return url;
-
     }
 
     @RequestMapping("/echartsList")
@@ -51,4 +54,9 @@ public class ProductController {
         return productService.getPieVO();
     }
 
+    @RequestMapping(value = "/maps",method = RequestMethod.GET)
+    @ResponseBody
+    public List<Map> mapsList() {
+        return iMapService.findMapList();
+    }
 }
