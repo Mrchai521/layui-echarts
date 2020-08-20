@@ -64,7 +64,7 @@
             //初始化echarts实例
         const mapChart = echarts.init(document.getElementById("mapChart"));
         var data;
-        data = $.ajax({
+        $.ajax({
             "url": "/maps",
             "type": "GET",
             "async": false,
