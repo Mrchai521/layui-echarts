@@ -1,5 +1,6 @@
 package com.cxf.www.layui.controller;
 
+import cn.hutool.core.util.StrUtil;
 import com.cxf.www.layui.entity.Map;
 import com.cxf.www.layui.service.IMapService;
 import com.cxf.www.layui.service.ProductService;
