@@ -965,7 +965,17 @@
         })();
 
         /*************** 关系图 **************/
-            //初始化echarts实例
+        var data;
+        $.ajax({
+            "url": "/relation",
+            "type": "GET",
+            "async": false,
+            "success": function (res) {
+                data = res;
+            }
+        });
+
+        //初始化echarts实例
         const relationChart = echarts.init(document.getElementById("relationChart"));
         const relationOpt = {
             animationDurationUpdate: 1500,
@@ -1034,63 +1044,7 @@
                         }
                     }
                 }],
-                data: [{
-                    name: '全栈',
-                    category: 0,
-                    draggable: true
-                }, {
-                    name: '前端',
-                    category: 1,
-                    draggable: true
-                }, {
-                    name: '移动端',
-                    category: 2,
-                    draggable: true
-                }, {
-                    name: '服务端',
-                    category: 3,
-                    draggable: true
-                }, {
-                    name: 'HTML',
-                    category: 1,
-                    draggable: true,
-                }, {
-                    name: 'CSS',
-                    category: 1,
-                    draggable: true,
-                }, {
-                    name: 'JavaScript',
-                    category: 1,
-                    draggable: true,
-                }, {
-                    name: 'TypeScript',
-                    category: 1,
-                    draggable: true,
-                }, {
-                    name: 'Java',
-                    category: 3,
-                    draggable: true,
-                }, {
-                    name: 'PHP',
-                    category: 3,
-                    draggable: true,
-                }, {
-                    name: 'Python',
-                    category: 3,
-                    draggable: true,
-                }, {
-                    name: 'Andriod',
-                    category: 2,
-                    draggable: true,
-                }, {
-                    name: 'Object-C',
-                    category: 2,
-                    draggable: true,
-                }, {
-                    name: 'Swift',
-                    category: 2,
-                    draggable: true,
-                }],
+                data: data,
                 links: [{
                     source: 0,
                     target: 1,
