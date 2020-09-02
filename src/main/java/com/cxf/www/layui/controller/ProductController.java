@@ -2,7 +2,9 @@ package com.cxf.www.layui.controller;
 
 import cn.hutool.core.util.StrUtil;
 import com.cxf.www.layui.entity.Map;
+import com.cxf.www.layui.entity.Relation;
 import com.cxf.www.layui.service.IMapService;
+import com.cxf.www.layui.service.IRelationService;
 import com.cxf.www.layui.service.ProductService;
 import com.cxf.www.layui.vo.BarVO;
 import com.cxf.www.layui.vo.DataVO;
@@ -25,6 +27,8 @@ public class ProductController {
     private ProductService productService;
     @Autowired
     private IMapService iMapService;
+    @Autowired
+    private IRelationService iRelationService;
 
     @RequestMapping("/list")
     @ResponseBody
@@ -55,9 +59,19 @@ public class ProductController {
         return productService.getPieVO();
     }
 
-    @RequestMapping(value = "/maps",method = RequestMethod.GET)
+    @RequestMapping(value = "/maps", method = RequestMethod.GET)
     @ResponseBody
     public List<Map> mapsList() {
         return iMapService.findMapList();
+    }
+
+    /**
+     * 查询所有图表关系
+     * @return
+     */
+    @RequestMapping(value = "/relation", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Relation> reliationList() {
+        return iRelationService.findAll();
     }
 }
